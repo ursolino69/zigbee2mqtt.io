@@ -193,6 +193,9 @@ Example payload:
         "date_code":"02-28-2017",
         "model_id":"lumi.plug",
         "scenes": [{"id": 3, "name": "Chill scene"}],
+        // Can be: PENDING, IN_PROGRESS, SUCCESSFUL or FAILED
+        "interview_state": "SUCCESSFUL",
+        // `interviewing` and `interview_completed` are deprecated, use `interview_state`.
         "interviewing":false,
         "interview_completed":true
     },
@@ -216,6 +219,7 @@ Example payload:
         "model_id":"TRADFRI bulb E27 CWS opal 600lm",
         "scenes": [],
         "date_code":"20180410",
+        "interview_state": "SUCCESSFUL",
         "interviewing":false,
         "interview_completed":true
     },
@@ -243,6 +247,7 @@ Example payload:
         "date_code":"04-28-2019",
         "model_id":null,
         "scenes": [],
+        "interview_state": "SUCCESSFUL",
         "interviewing":false,
         "interview_completed":true
     },
@@ -259,6 +264,7 @@ Example payload:
         "date_code":null,
         "scenes": [],
         "model_id":null,
+        "interview_state": "SUCCESSFUL",
         "interviewing":false,
         "interview_completed":true
     },
@@ -482,6 +488,18 @@ See [OTA updates](./ota_updates.md).
 
 See [OTA updates](./ota_updates.md).
 
+#### zigbee2mqtt/bridge/request/device/ota_update/schedule
+
+See [OTA updates](./ota_updates.md).
+
+#### zigbee2mqtt/bridge/request/device/ota_update/schedule/downgrade
+
+See [OTA updates](./ota_updates.md).
+
+#### zigbee2mqtt/bridge/request/device/ota_update/unschedule
+
+See [OTA updates](./ota_updates.md).
+
 #### zigbee2mqtt/bridge/request/device/configure
 
 Allows to manually trigger a re-configure of the device. Should only be used when the device is not working as expected (e.g. not reporting certain values), not all devices can be configured (only when the definition has a `configure` in its [definition](https://github.com/Koenkk/zigbee-herdsman-converters/blob/master/devices)). Allowed payloads are `{"id": "deviceID"}` or `deviceID` where deviceID can be the `ieee_address` or `friendly_name` of the device. Example; request: `{"id": "my_remote"}` or `my_remote`, response: `{"data":{"id": "my_remote"},"status":"ok"}`.
@@ -518,7 +536,7 @@ By setting up reporting for the bulb it will send notifications to Zigbee2MQTT a
 
 It is a good practice to keep a balance between staying updated with relevant information and conserving energy, especially in the case of battery-powered devices.
 
-Refer to the Configure Reporting Command in the [ZigBee Cluster Library](https://github.com/Koenkk/zigbee-herdsman/blob/master/docs/07-5123-08-Zigbee-Cluster-Library.pdf) for more information. Example payload is `{"id":"my_bulb","endpoint":1,"cluster":"genLevelCtrl","attribute":"currentLevel","minimum_report_interval":5,"maximum_report_interval":10,"reportable_change":10}`. In this case the response would be `{"data":{"id":"my_bulb","endpoint":1,"cluster":"genLevelCtrl","attribute":"currentLevel","minimum_report_interval":5,"maximum_report_interval":"10","reportable_change":10},"status":"ok"}`.
+Refer to the Configure Reporting Command in the [ZigBee Cluster Library](https://github.com/Koenkk/zigbee-herdsman/wiki/References#csa-zigbee-alliance-spec) for more information. Example payload is `{"id":"my_bulb","endpoint":1,"cluster":"genLevelCtrl","attribute":"currentLevel","minimum_report_interval":5,"maximum_report_interval":10,"reportable_change":10}`. In this case the response would be `{"data":{"id":"my_bulb","endpoint":1,"cluster":"genLevelCtrl","attribute":"currentLevel","minimum_report_interval":5,"maximum_report_interval":"10","reportable_change":10},"status":"ok"}`.
 
 Parameters
 

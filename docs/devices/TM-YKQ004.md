@@ -23,8 +23,11 @@ pageClass: device-page
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
+## Notes
 
-
+### Reset/Re-pairing
+Unfortunately it is currently unknown how to bring the device in reset or re-pairing mode.
+Please be that kind and add this information, if your are in knowledge of it.
 <!-- Notes END: Do not edit below this line -->
 
 
